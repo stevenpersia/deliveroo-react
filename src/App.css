@@ -1,32 +1,182 @@
-.App {
-  text-align: center;
+/* GLOBAL */
+body {
+	background: #fff;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+.container {
+	max-width: 1024px;
+	margin: 0 auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.flex-container {
+	display: flex;
 }
 
-.App-link {
-  color: #61dafb;
+/* HEADER */
+header .container {
+	padding: 0 30px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+header {
+	background: #fff;
+	border-bottom: 2px solid #f3f5f5;
+}
+
+.logo {
+	height: 50px;
+}
+
+/* RESTAURANT */
+#restaurant {
+	background: #f3f5f5;
+}
+
+#restaurant > .content {
+	max-width: 1024px;
+}
+
+#restaurant .container {
+	padding: 30px;
+}
+
+/* TOP BAR */
+.info-restaurant {
+	background: #fff;
+}
+
+.info-restaurant .container {
+	display: flex;
+	height: auto;
+	padding: 30px;
+}
+
+.info-restaurant .image-info {
+	width: 400px;
+	height: 180px;
+	overflow: hidden;
+	border-radius: 3px;
+	flex: 0 30%;
+	align-self: center;
+}
+
+.info-restaurant img {
+	width: 400px;
+}
+
+.info-restaurant .content-info {
+	padding-right: 30px;
+	flex: 0 70%;
+}
+
+/* CONTENT RESTAURANT */
+.content-restaurant {
+	margin-left: -10px;
+	margin-top: -10px;
+}
+
+.menu-restaurant {
+	flex: 0 70%;
+}
+
+.sidebar-restaurant {
+	flex: 0 30%;
+}
+
+/* CARDS MENU */
+.service-menu {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.card-menu {
+	display: flex;
+	background: #fff;
+	border-radius: 3px;
+	margin: 10px;
+	width: calc(50% - 20px);
+}
+
+.card-menu .content {
+	padding: 0 0 20px 30px;
+	flex: 2;
+}
+
+.card-menu h3 {
+	color: #2e3333;
+}
+
+.card-menu p {
+	height: 56px;
+	overflow: hidden;
+	color: #828585;
+}
+
+.card-menu img {
+	height: 100px;
+}
+
+.card-menu .image-menu {
+	align-self: center;
+	max-width: 100px;
+	height: 100px;
+	overflow: hidden;
+	margin: 30px;
+	flex: 3;
+	border-radius: 3px;
+}
+
+/* CART */
+.cart {
+	background: #fff;
+	margin: 10px 0 0 10px;
+	padding: 30px;
+	border-radius: 3px;
+	text-align: center;
+}
+
+.cart .btn {
+	width: 100%;
+}
+
+.btn {
+	border-radius: 3px;
+	padding: 10px;
+}
+
+.disabled {
+	background: #bac3c3;
+	color: #8e9c9d;
+}
+
+/* MEDIAS QUERIES */
+@media (max-width: 880px) {
+	.sidebar-restaurant {
+		display: none;
+	}
+
+	.menu-restaurant {
+		flex: initial;
+	}
+}
+
+@media (max-width: 600px) {
+	.card-menu {
+		width: 100%;
+	}
+
+	.info-restaurant .container {
+		flex-direction: column-reverse;
+		text-align: center;
+		margin: 0 auto;
+	}
+
+	.info-restaurant .content-info {
+		padding-right: 0;
+		flex: initial;
+	}
+	.info-restaurant .image-info {
+		width: 100%;
+		height: 180px;
+		overflow: hidden;
+	}
 }
