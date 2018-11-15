@@ -129,9 +129,13 @@ header {
 .cart {
 	background: #fff;
 	margin: 10px 0 0 10px;
-	padding: 30px;
 	border-radius: 3px;
 	text-align: center;
+	min-height: 250px;
+}
+
+.cart a {
+	text-decoration: none;
 }
 
 .cart .btn {
@@ -140,12 +144,36 @@ header {
 
 .btn {
 	border-radius: 3px;
-	padding: 10px;
+	padding: 15px;
+	font-weight: 600;
 }
 
 .disabled {
 	background: #bac3c3;
 	color: #8e9c9d;
+}
+
+.enabled {
+	background: #00ccbc;
+	color: #fff;
+}
+
+.cart .products-list {
+	margin-top: 30px;
+}
+
+.cart .quantity {
+	color: #747878;
+}
+
+.cart .quantity-btn {
+	color: #00ccbc;
+	background: #fff;
+	border: 1px solid #00ccbc;
+	border-radius: 50%;
+	margin: 5px;
+	padding: 5px;
+	cursor: pointer;
 }
 
 /* MEDIAS QUERIES */

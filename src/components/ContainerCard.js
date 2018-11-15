@@ -1,6 +1,6 @@
 import React from 'react';
 
-class ServiceMenu extends React.Component {
+class ContainerCard extends React.Component {
 	render() {
 		return (
 			<div>
@@ -13,4 +13,4 @@ class ServiceMenu extends React.Component {
 	}
 }
 
-export default ServiceMenu;
+export default ContainerCard;
