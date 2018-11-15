@@ -24,7 +24,7 @@ class Restaurant extends React.Component {
 
 		let containerCards = [];
 
-		// Grab & Push menu cards & cart
+		// Grab & Push menu cards in cart
 		for (let i = 0; i < keys.length; i++) {
 			if (entries[i][1].length > 0) {
 				let menuCards = [];
@@ -36,16 +36,26 @@ class Restaurant extends React.Component {
 							text={entries[i][1][j].description}
 							price={entries[i][1][j].price}
 							img={entries[i][1][j].picture}
-							onClick={() => {
+							handleClick={() => {
 								const oldCart = this.state.cart;
 								const newCart = [...oldCart];
+								let productExists = false;
 
-								newCart.push({
-									id: entries[i][1][j].id,
-									quantity: 1,
-									productName: entries[i][1][j].title,
-									price: entries[i][1][j].price
-								});
+								for (let k = 0; k < newCart.length; k++) {
+									if (newCart[k].id === entries[i][1][j].id) {
+										newCart[k].quantity++;
+										productExists = true;
+									}
+								}
+
+								if (productExists === false) {
+									newCart.push({
+										id: entries[i][1][j].id,
+										quantity: 1,
+										productName: entries[i][1][j].title,
+										price: entries[i][1][j].price
+									});
+								}
 
 								this.setState({
 									cart: newCart
@@ -71,7 +81,33 @@ class Restaurant extends React.Component {
 						<MenuRestaurant content={containerCards} />
 					</div>
 					<div className="sidebar-restaurant">
-						<Cart addedProducts={this.state.cart} />
+						<Cart
+							addedProducts={this.state.cart}
+							decrement={id => {
+								const newCart = [...this.state.cart];
+
+								for (let i = 0; i < newCart.length; i++) {
+									if (newCart[i].id === id && newCart[i].quantity > 1) {
+										newCart[i].quantity--;
+									}
+								}
+								this.setState({
+									cart: newCart
+								});
+							}}
+							increment={id => {
+								const newCart = [...this.state.cart];
+
+								for (let i = 0; i < newCart.length; i++) {
+									if (newCart[i].id === id) {
+										newCart[i].quantity++;
+									}
+								}
+								this.setState({
+									cart: newCart
+								});
+							}}
+						/>
 					</div>
 				</div>
 			</div>

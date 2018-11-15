@@ -12,7 +12,7 @@ class CardMenu extends React.Component {
 
 	render() {
 		return (
-			<div className="card-menu">
+			<div className="card-menu" onClick={this.props.handleClick}>
 				<div className="content">
 					<h3>{this.props.title}</h3>
 					<p>{this.props.text}</p>

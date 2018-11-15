@@ -4,16 +4,36 @@ class Cart extends React.Component {
 	render() {
 		const products = [];
 		for (let i = 0; i < this.props.addedProducts.length; i++) {
-			console.log(this.props.addedProducts[i]);
 			products.push(
-				<li>
-					<span className="quantity-btn">-</span>
+				<li key={this.props.addedProducts[i].id}>
+					<div
+						class="cssCircle minusSign"
+						onClick={() => {
+							this.props.decrement(this.props.addedProducts[i].id);
+						}}
+					>
+						&#8211;
+					</div>
 					<span className="quantity">
 						{this.props.addedProducts[i].quantity}
 					</span>
-					<span className="quantity-btn">+</span>
+					<div
+						class="cssCircle plusSign"
+						onClick={() => {
+							this.props.increment(this.props.addedProducts[i].id);
+						}}
+					>
+						&#43;
+					</div>
 					<span>{this.props.addedProducts[i].productName}</span>
-					<span className="price">{this.props.addedProducts[i].price} €</span>
+					<span className="price">
+						{Math.round(
+							this.props.addedProducts[i].price *
+								this.props.addedProducts[i].quantity *
+								100
+						) / 100}
+						€
+					</span>
 				</li>
 			);
 		}
