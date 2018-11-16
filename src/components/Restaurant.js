@@ -11,7 +11,9 @@ class Restaurant extends React.Component {
 		menu: {},
 		cart: [
 			// {id: "ID", quantity: 1, productName: "", price: 10}
-		]
+		],
+		subTotalCart: 0,
+		totalCart: 0
 	};
 
 	render() {
@@ -21,7 +23,7 @@ class Restaurant extends React.Component {
 
 		const entries = Object.entries(this.state.menu);
 		const keys = Object.keys(this.state.menu);
-
+		const deliveryFee = 2.5;
 		let containerCards = [];
 
 		// Grab & Push menu cards in cart
@@ -39,6 +41,7 @@ class Restaurant extends React.Component {
 							handleClick={() => {
 								const oldCart = this.state.cart;
 								const newCart = [...oldCart];
+								let newSubTotal = this.state.subTotalCart;
 								let productExists = false;
 
 								for (let k = 0; k < newCart.length; k++) {
@@ -57,8 +60,12 @@ class Restaurant extends React.Component {
 									});
 								}
 
+								newSubTotal += Number(entries[i][1][j].price);
+
 								this.setState({
-									cart: newCart
+									cart: newCart,
+									subTotalCart: newSubTotal,
+									totalCart: newSubTotal + deliveryFee
 								});
 							}}
 						/>
@@ -83,28 +90,44 @@ class Restaurant extends React.Component {
 					<div className="sidebar-restaurant">
 						<Cart
 							addedProducts={this.state.cart}
+							renderSubTotal={this.state.subTotalCart}
+							renderTotal={this.state.totalCart}
+							renderDeliveryFee={deliveryFee}
 							decrement={id => {
 								const newCart = [...this.state.cart];
+
+								/* TOTAL CART */
+								let newSubTotal = this.state.subTotalCart;
 
 								for (let i = 0; i < newCart.length; i++) {
 									if (newCart[i].id === id && newCart[i].quantity > 1) {
 										newCart[i].quantity--;
+										newSubTotal -= Number(newCart[i].price);
 									}
 								}
+
 								this.setState({
-									cart: newCart
+									cart: newCart,
+									subTotalCart: newSubTotal,
+									totalCart: newSubTotal + deliveryFee
 								});
 							}}
 							increment={id => {
 								const newCart = [...this.state.cart];
 
+								/* TOTAL CART */
+								let newSubTotal = this.state.subTotalCart;
+
 								for (let i = 0; i < newCart.length; i++) {
 									if (newCart[i].id === id) {
 										newCart[i].quantity++;
+										newSubTotal += Number(newCart[i].price);
 									}
 								}
 								this.setState({
-									cart: newCart
+									cart: newCart,
+									subTotalCart: newSubTotal,
+									totalCart: newSubTotal + deliveryFee
 								});
 							}}
 						/>

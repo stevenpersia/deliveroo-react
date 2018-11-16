@@ -6,34 +6,38 @@ class Cart extends React.Component {
 		for (let i = 0; i < this.props.addedProducts.length; i++) {
 			products.push(
 				<li key={this.props.addedProducts[i].id}>
-					<div
-						class="cssCircle minusSign"
-						onClick={() => {
-							this.props.decrement(this.props.addedProducts[i].id);
-						}}
-					>
-						&#8211;
+					<div className="change-quantity">
+						<div
+							class="cssCircle minusSign"
+							onClick={() => {
+								this.props.decrement(this.props.addedProducts[i].id);
+							}}
+						>
+							&#8211;
+						</div>
+						<span className="quantity">
+							{this.props.addedProducts[i].quantity}
+						</span>
+						<div
+							class="cssCircle plusSign"
+							onClick={() => {
+								this.props.increment(this.props.addedProducts[i].id);
+							}}
+						>
+							&#43;
+						</div>
 					</div>
-					<span className="quantity">
-						{this.props.addedProducts[i].quantity}
-					</span>
-					<div
-						class="cssCircle plusSign"
-						onClick={() => {
-							this.props.increment(this.props.addedProducts[i].id);
-						}}
-					>
-						&#43;
+					<div className="product-name">
+						{this.props.addedProducts[i].productName}
 					</div>
-					<span>{this.props.addedProducts[i].productName}</span>
-					<span className="price">
+					<div className="price">
 						{Math.round(
 							this.props.addedProducts[i].price *
 								this.props.addedProducts[i].quantity *
 								100
 						) / 100}
 						€
-					</span>
+					</div>
 				</li>
 			);
 		}
@@ -44,6 +48,22 @@ class Cart extends React.Component {
 				</a>
 				<div className="products-list">
 					<ul>{products}</ul>
+				</div>
+				<div className="sous-total">
+					<div>
+						<span className="text">Sous-total</span>
+						<span>{this.props.renderSubTotal.toFixed(2)} €</span>
+					</div>
+					<div>
+						<span className="text">Frais de livraison</span>
+						<span>{this.props.renderDeliveryFee} €</span>
+					</div>
+				</div>
+				<div className="total">
+					<div>
+						<span className="text">Total</span>
+						<span>{this.props.renderTotal.toFixed(2)} €</span>
+					</div>
 				</div>
 			</div>
 		);
