@@ -3,7 +3,7 @@ body {
 	background-color: #f3f5f5;
 }
 
-h1 {
+.restaurant-name h1 {
 	color: #fff;
 	padding-left: 20px;
 }
