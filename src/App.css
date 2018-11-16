@@ -18,12 +18,12 @@ header .container {
 }
 
 header {
-	background: #fff;
-	border-bottom: 2px solid #f3f5f5;
+	background: #006d68;
 }
 
 .logo {
-	height: 50px;
+	height: 35px;
+	padding: 20px;
 }
 
 /* RESTAURANT */
@@ -130,145 +130,6 @@ header {
 	margin: 30px;
 	flex: 3;
 	border-radius: 3px;
-}
-
-/* CART */
-.cart {
-	background: #fff;
-	margin: 10px 0 0 10px;
-	padding: 10px;
-	border-radius: 3px;
-	min-height: 250px;
-	display: flex;
-	flex-direction: column;
-	-webkit-box-shadow: -2px 9px 32px -3px rgba(186, 186, 186, 0.7);
-	-moz-box-shadow: -2px 9px 32px -3px rgba(186, 186, 186, 0.7);
-	box-shadow: -2px 9px 32px -3px rgba(186, 186, 186, 0.7);
-}
-
-.cart a {
-	text-decoration: none;
-}
-
-.cart ul {
-	padding: 0;
-}
-
-.cart ul li {
-	list-style: none;
-}
-
-.cart .btn {
-	text-align: center;
-}
-
-.btn {
-	border-radius: 3px;
-	padding: 15px;
-	font-weight: 600;
-}
-
-.disabled {
-	background: #bac3c3;
-	color: #8e9c9d;
-}
-
-.enabled {
-	background: #00ccbc;
-	color: #fff;
-}
-
-.cart .products-list ul li {
-	margin-top: 30px;
-	display: flex;
-	align-items: center;
-}
-
-.cart .products-list ul li > * {
-	margin: 0 5px;
-}
-
-.cart .quantity {
-	color: #747878;
-	padding: 0 5px;
-}
-
-.cart .change-quantity {
-	display: inline-flex;
-}
-
-.cart .product-name {
-	flex-grow: 5;
-}
-
-.cssCircle {
-	display: inline-block;
-	-webkit-border-radius: 999px;
-	-moz-border-radius: 999px;
-	border-radius: 999px;
-	min-width: 17px;
-	min-height: 17px;
-	padding: 0px;
-	background: #fff;
-	border: 2px solid #00ccbc;
-	color: #00ccbc;
-	text-align: center;
-	-webkit-transition: background 0.2s linear;
-	-moz-transition: background 0.2s linear;
-	-ms-transition: background 0.2s linear;
-	-o-transition: background 0.2s linear;
-	transition: background 0.2s linear;
-	transition: color 0.2s linear;
-	font: 16px Arial, sans-serif;
-}
-
-.cssCircle:hover {
-	background: #00ccbc;
-	cursor: pointer;
-}
-
-.minusSign {
-	line-height: 1em;
-	margin-bottom: 0px;
-}
-
-.plusSign {
-	line-height: 1.1em;
-}
-
-.minusSign:hover,
-.plusSign:hover {
-	color: #fff;
-}
-
-.sous-total {
-	border-top: 1px solid #ddd;
-	padding: 20px 0;
-}
-
-.total {
-	padding: 20px 0;
-}
-
-.total > div,
-.sous-total > div {
-	display: flex;
-}
-
-.total .text,
-.sous-total .text {
-	flex-grow: 1;
-}
-
-.sous-total span {
-	padding: 5px 0;
-}
-
-.total {
-	font-weight: 700;
-	-webkit-box-shadow: 0px -6px 4px -2px rgba(240, 240, 240, 1);
-	-moz-box-shadow: 0px -6px 4px -2px rgba(240, 240, 240, 1);
-	box-shadow: 0px -6px 4px -2px rgba(240, 240, 240, 1);
 }
 
 /* MEDIAS QUERIES */

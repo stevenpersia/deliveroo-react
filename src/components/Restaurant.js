@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import InfoRestaurant from './InfoRestaurant';
 import MenuRestaurant from './MenuRestaurant';
@@ -8,10 +9,9 @@ import Cart from './Cart';
 
 class Restaurant extends React.Component {
 	state = {
+		restaurant: [],
 		menu: {},
-		cart: [
-			// {id: "ID", quantity: 1, productName: "", price: 10}
-		],
+		cart: [],
 		subTotalCart: 0,
 		totalCart: 0
 	};
@@ -82,55 +82,71 @@ class Restaurant extends React.Component {
 		}
 		return (
 			<div id="restaurant">
-				<InfoRestaurant />
+				<InfoRestaurant
+					name={this.state.restaurant.name}
+					description={this.state.restaurant.description}
+					image={this.state.restaurant.picture}
+				/>
 				<div className="container flex-container">
 					<div className="menu-restaurant">
 						<MenuRestaurant content={containerCards} />
 					</div>
 					<div className="sidebar-restaurant">
-						<Cart
-							addedProducts={this.state.cart}
-							renderSubTotal={this.state.subTotalCart}
-							renderTotal={this.state.totalCart}
-							renderDeliveryFee={deliveryFee}
-							decrement={id => {
-								const newCart = [...this.state.cart];
+						<div className="cart">
+							<Link
+								to={{
+									pathname: '/checkout',
+									cart: this.state.cart,
+									restaurant: this.state.restaurant
+								}}
+								className="btn enabled"
+							>
+								Valider mon panier
+							</Link>
+							<Cart
+								addedProducts={this.state.cart}
+								renderSubTotal={this.state.subTotalCart}
+								renderTotal={this.state.totalCart}
+								renderDeliveryFee={deliveryFee}
+								decrement={id => {
+									const newCart = [...this.state.cart];
 
-								/* TOTAL CART */
-								let newSubTotal = this.state.subTotalCart;
+									/* TOTAL CART */
+									let newSubTotal = this.state.subTotalCart;
 
-								for (let i = 0; i < newCart.length; i++) {
-									if (newCart[i].id === id && newCart[i].quantity > 1) {
-										newCart[i].quantity--;
-										newSubTotal -= Number(newCart[i].price);
+									for (let i = 0; i < newCart.length; i++) {
+										if (newCart[i].id === id && newCart[i].quantity > 1) {
+											newCart[i].quantity--;
+											newSubTotal -= Number(newCart[i].price);
+										}
 									}
-								}
 
-								this.setState({
-									cart: newCart,
-									subTotalCart: newSubTotal,
-									totalCart: newSubTotal + deliveryFee
-								});
-							}}
-							increment={id => {
-								const newCart = [...this.state.cart];
+									this.setState({
+										cart: newCart,
+										subTotalCart: newSubTotal,
+										totalCart: newSubTotal + deliveryFee
+									});
+								}}
+								increment={id => {
+									const newCart = [...this.state.cart];
 
-								/* TOTAL CART */
-								let newSubTotal = this.state.subTotalCart;
+									/* TOTAL CART */
+									let newSubTotal = this.state.subTotalCart;
 
-								for (let i = 0; i < newCart.length; i++) {
-									if (newCart[i].id === id) {
-										newCart[i].quantity++;
-										newSubTotal += Number(newCart[i].price);
+									for (let i = 0; i < newCart.length; i++) {
+										if (newCart[i].id === id) {
+											newCart[i].quantity++;
+											newSubTotal += Number(newCart[i].price);
+										}
 									}
-								}
-								this.setState({
-									cart: newCart,
-									subTotalCart: newSubTotal,
-									totalCart: newSubTotal + deliveryFee
-								});
-							}}
-						/>
+									this.setState({
+										cart: newCart,
+										subTotalCart: newSubTotal,
+										totalCart: newSubTotal + deliveryFee
+									});
+								}}
+							/>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -139,7 +155,8 @@ class Restaurant extends React.Component {
 	componentDidMount() {
 		axios.get(`https://deliveroo-api.now.sh/menu`).then(response => {
 			this.setState({
-				menu: response.data.menu
+				menu: response.data.menu,
+				restaurant: response.data.restaurant
 			});
 		});
 	}

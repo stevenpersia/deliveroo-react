@@ -1,0 +1,154 @@
+/* General */
+body {
+	background-color: #f3f5f5;
+}
+
+h1 {
+	color: #fff;
+	padding-left: 20px;
+}
+
+h2 {
+	font-size: 15px;
+	margin: 20px 0;
+}
+/* Checkout */
+.checkout-page {
+	max-width: 1024px;
+	margin: 0 auto;
+}
+
+.checkout-content {
+	display: flex;
+}
+
+/* Form Section */
+.checkout-form-section {
+	background: #fff;
+	flex: 0 1 65%;
+	margin: 20px;
+	padding: 0 30px 30px 30px;
+	border-radius: 3px;
+	text-align: center;
+}
+
+/* Form */
+label {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #828585;
+	margin-bottom: 8px;
+	letter-spacing: initial;
+	text-transform: none;
+	display: block;
+	line-height: 1em;
+	text-align: left;
+	padding-left: 15px;
+}
+
+form {
+	display: flex;
+	flex-wrap: wrap;
+	padding-top: 20px;
+}
+
+.flat,
+.code,
+.postcode,
+.city {
+	flex: 0 1 50%;
+}
+
+.street_address,
+.phone,
+.instructions {
+	flex: 0 1 100%;
+}
+
+input,
+textarea {
+	border-radius: 2px;
+	border: 1px solid #bac3c3;
+	box-shadow: inset 0 2px 0 0 rgba(0, 0, 0, 0.05);
+	margin-bottom: 24px;
+	padding: 13px;
+	transition: border-color 0.3s, box-shadow 0.3s;
+	width: calc(100% - 50px);
+}
+
+input:focus,
+textarea:focus {
+	border: 1px solid #00ccbc;
+	outline: none;
+}
+
+.checkout-form-btn {
+	background: #00ccbc;
+	color: #fff;
+	border-radius: 3px;
+	padding: 15px;
+	font-weight: 600;
+	border: 0;
+	font-size: 15px;
+}
+
+.checkout-form-btn:hover {
+	opacity: 0.8;
+	cursor: pointer;
+}
+
+/* Cart Section */
+.checkout-cart-section {
+	background: #fff;
+	border-radius: 3px;
+	flex: 0 1 35%;
+	margin: 20px;
+	padding: 0 30px 30px 30px;
+	box-shadow: 0 14px 14px 0 rgba(0, 0, 0, 0.08);
+	color: #2e3333;
+	height: 100%;
+}
+
+.checkout-products li {
+	list-style: none;
+	margin: 20px 0;
+}
+
+.qty-product span:first-child {
+	padding-right: 15px;
+	color: #828585;
+}
+
+.checkout-subtotal-fee,
+.checkout-total {
+	padding: 20px 0;
+	border-top: 1px solid #d5d6d6;
+}
+
+.checkout-total {
+	font-weight: 700;
+}
+
+.checkout-subtotal,
+.checkout-fee,
+.checkout-total,
+.checkout-products li {
+	display: flex;
+	justify-content: space-between;
+	text-align: left;
+}
+
+/* HEADER */
+.angled-hero-header {
+	background-color: #006d68;
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 2000px;
+	left: 0;
+	transform: skewY(-6deg);
+	transform-origin: 50%;
+	z-index: -1;
+	bottom: 600px;
+}

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './Cart.css';
+
 class Cart extends React.Component {
 	render() {
 		const products = [];
@@ -8,7 +10,7 @@ class Cart extends React.Component {
 				<li key={this.props.addedProducts[i].id}>
 					<div className="change-quantity">
 						<div
-							class="cssCircle minusSign"
+							className="cssCircle minusSign"
 							onClick={() => {
 								this.props.decrement(this.props.addedProducts[i].id);
 							}}
@@ -19,7 +21,7 @@ class Cart extends React.Component {
 							{this.props.addedProducts[i].quantity}
 						</span>
 						<div
-							class="cssCircle plusSign"
+							className="cssCircle plusSign"
 							onClick={() => {
 								this.props.increment(this.props.addedProducts[i].id);
 							}}
@@ -31,21 +33,13 @@ class Cart extends React.Component {
 						{this.props.addedProducts[i].productName}
 					</div>
 					<div className="price">
-						{Math.round(
-							this.props.addedProducts[i].price *
-								this.props.addedProducts[i].quantity *
-								100
-						) / 100}
-						€
+						{Math.round(this.props.addedProducts[i].price * 100) / 100}€
 					</div>
 				</li>
 			);
 		}
 		return (
-			<div className="cart">
-				<a href="/" className="btn enabled">
-					Valider mon panier
-				</a>
+			<div>
 				<div className="products-list">
 					<ul>{products}</ul>
 				</div>
