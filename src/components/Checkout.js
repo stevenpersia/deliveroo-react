@@ -30,28 +30,32 @@ class Checkout extends React.Component {
 		const checkoutCart = [];
 		let subTotalCart = 0;
 		const deliveryFee = 2.5;
+		let restaurantName = '';
 
-		for (let i = 0; i < this.props.location.cart.length; i++) {
-			checkoutCart.push(
-				<li key={this.props.location.cart[i].id}>
-					<div className="qty-product">
-						<span>{this.props.location.cart[i].quantity}x</span>
-						<span>{this.props.location.cart[i].productName}</span>
-					</div>
+		if (this.props.location.cart) {
+			for (let i = 0; i < this.props.location.cart.length; i++) {
+				checkoutCart.push(
+					<li key={this.props.location.cart[i].id}>
+						<div className="qty-product">
+							<span>{this.props.location.cart[i].quantity}x</span>
+							<span>{this.props.location.cart[i].productName}</span>
+						</div>
 
-					<span>{this.props.location.cart[i].price} €</span>
-				</li>
-			);
-			subTotalCart +=
-				this.props.location.cart[i].quantity *
-				this.props.location.cart[i].price;
+						<span>{this.props.location.cart[i].price} €</span>
+					</li>
+				);
+				subTotalCart +=
+					this.props.location.cart[i].quantity *
+					this.props.location.cart[i].price;
+			}
+			restaurantName = this.props.location.restaurant.name;
 		}
 
 		return (
 			<div className="checkout-page">
 				<div className="angled-hero-header" />
 				<div className="restaurant-name">
-					<h1>{this.props.location.restaurant.name}</h1>
+					<h1>{restaurantName}</h1>
 				</div>
 				<div className="checkout-content">
 					<div className="checkout-form-section">
