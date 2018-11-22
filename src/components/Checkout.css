@@ -93,6 +93,10 @@ textarea:focus {
 	font-size: 15px;
 }
 
+.checkout-form-btn-section {
+	margin: 0 auto;
+}
+
 .checkout-form-btn:hover {
 	opacity: 0.8;
 	cursor: pointer;
